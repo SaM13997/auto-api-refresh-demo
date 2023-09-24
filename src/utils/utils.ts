@@ -1,4 +1,4 @@
-const urlBase64Decode = (input: string) => {
+export const urlBase64Decode = (input: string) => {
 	// decode the base64 string
 	const base64Decoded = atob(input)
 
@@ -8,3 +8,6 @@ const urlBase64Decode = (input: string) => {
 	// parse the JSON data
 	return JSON.parse(urlDecoded)
 }
+
+export const unixTimestampToDate = (timestamp: number) =>
+	new Date(timestamp * 1000)

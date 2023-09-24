@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("MIGRATE_DATABASE_URL") // this is used here because we have to use the Data proxy from Prisma as we're deploying from vercel edge runtime, which isnt supported by default prisma config
 }
 
 model ApiToken {
@@ -15,4 +16,5 @@ model ApiToken {
   accessToken    String
   expirationDate DateTime
   refreshToken   String
+  addedOn        DateTime @default(now())
 }
